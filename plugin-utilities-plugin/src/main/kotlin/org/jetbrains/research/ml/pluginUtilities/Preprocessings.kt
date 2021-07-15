@@ -1,4 +1,4 @@
-package org.jetbrains.research.ml.pluginUtilities.preprocessing
+package org.jetbrains.research.ml.pluginUtilities
 
 import org.jetbrains.research.ml.pluginUtilities.collectJavaProjectRoots
 import java.io.File
