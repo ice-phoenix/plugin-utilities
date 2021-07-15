@@ -2,7 +2,10 @@ group = rootProject.group
 version = rootProject.version
 
 dependencies {
+    implementation(project(":plugin-utilities-core"))
+
     implementation("com.xenomachina:kotlin-argparser:2.0.7")
+    implementation("org.junit.jupiter:junit-jupiter:5.7.0")
 }
 
 // TODO: move into the project
