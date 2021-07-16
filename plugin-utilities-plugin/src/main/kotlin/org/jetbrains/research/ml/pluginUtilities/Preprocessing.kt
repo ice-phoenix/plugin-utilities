@@ -1,17 +1,19 @@
 package org.jetbrains.research.ml.pluginUtilities
 
-import org.jetbrains.research.ml.pluginUtilities.collectJavaProjectRoots
 import java.io.File
+
+class Preprocessor(private val preprocessings: List<Preprocessing>) {
+    fun preprocess(repoDirectory: File, outputDirectory: File) {
+        repoDirectory.copyRecursively(outputDirectory)
+        for (preprocessing in preprocessings) {
+            preprocessing.preprocess(outputDirectory)
+        }
+    }
+}
 
 interface Preprocessing {
     val name: String
     fun preprocess(repoDirectory: File)
-}
-
-fun List<Preprocessing>.preprocess(repoDirectory: File) {
-    for (preprocessing in this) {
-        preprocessing.preprocess(repoDirectory)
-    }
 }
 
 class AndroidSdkPreprocessing(private val androidSdkAbsolutePath: String) : Preprocessing {
