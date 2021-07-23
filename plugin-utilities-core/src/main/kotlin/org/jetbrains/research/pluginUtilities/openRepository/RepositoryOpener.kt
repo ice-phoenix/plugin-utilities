@@ -42,8 +42,11 @@ class RepositoryOpener(private val acceptedBuildSystems: List<BuildSystem>) {
                 allProjectsOpenedSuccessfully = false
                 continue
             }
-            action(project)
-            closeSingleProject(project)
+            try {
+                action(project)
+            } finally {
+                closeSingleProject(project)
+            }
         }
         return allProjectsOpenedSuccessfully
     }
